@@ -1,0 +1,116 @@
+.dashboard {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: var(--background-color);
+    background-image: url('./../../public/background.jpg');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .button-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .add-button-form {
+    margin-top: 50px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  button {
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0069d9;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  .website-input-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .website-input-group label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .website-input-group input[type="text"] {
+    margin-right: 10px;
+  }
+  
+  .website-input-group button {
+    margin-left: 10px;
+  }
+  
+  /* Added */
+  .button {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .button a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.5rem;
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .button a:hover {
+    text-decoration: underline;
+  }
+  
+  .button button {
+    margin-left: 10px;
+  }
+  
+  
