@@ -43,6 +43,15 @@
     border: 1px solid #ccc;
     font-size: 1rem;
   }
+  textarea {
+  height: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: none;
+}
+
   
   button {
     height: 40px;

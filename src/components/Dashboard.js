@@ -41,7 +41,7 @@ const Dashboard = () => {
     const newButton = {
       id: buttons.length + 1,
       name: newButtonName,
-      urls: newButtonUrls.split(","),
+      urls: newButtonUrls.split("\n"),
     };
     setButtons([...buttons, newButton]);
     setNewButtonName("");
@@ -56,15 +56,16 @@ const Dashboard = () => {
         <input
           type="text"
           id="newButtonName"
+          className="form-control"
           value={newButtonName}
           onChange={handleNewButtonNameChange}
         />
       </div>
       <div className="form-group">
-        <label htmlFor="newButtonUrls">URLs (comma-separated):</label>
-        <input
-          type="text"
+        <label htmlFor="newButtonUrls">URLs (Newline-separated):</label>
+        <textarea
           id="newButtonUrls"
+          className="form-control"
           value={newButtonUrls}
           onChange={handleNewButtonUrlsChange}
         />

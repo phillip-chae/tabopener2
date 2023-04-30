@@ -25,7 +25,7 @@ const Button = ({ id, name, urls, onDeleteButtonClick, onEditButtonClick }) => {
   };
 
   const handleUrlsChange = (event) => {
-    setEditedUrls(event.target.value.split(","));
+    setEditedUrls(event.target.value.split("\n"));
   };
 
   const handleDeleteButton = () => {
