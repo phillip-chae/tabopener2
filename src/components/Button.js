@@ -32,6 +32,10 @@ const Button = ({ id, name, urls, onDeleteButtonClick, onEditButtonClick }) => {
     onDeleteButtonClick(id);
   };
 
+  const openWebsites = () => {
+    urls.forEach(url => window.open(url, '_blank'))
+  };
+
   if (isEditing) {
     return (
       <div className="button">
@@ -60,7 +64,7 @@ const Button = ({ id, name, urls, onDeleteButtonClick, onEditButtonClick }) => {
   } else {
     return (
       <div className="button">
-        <a href={urls[0]} target="_blank" rel="noopener noreferrer">{name}</a>
+        <button className="name" onClick={openWebsites}>{name}</button>
         <button onClick={() => setIsEditing(true)}>Edit</button>
         <button onClick={handleDeleteButton}>Delete</button>
       </div>

@@ -9,14 +9,10 @@
     border-radius: 5px;
   }
   
-  .button a {
+  .button {
     text-decoration: none;
     font-size: 18px;
     color: #333;
-  }
-  
-  .button a:hover {
-    text-decoration: underline;
   }
   
   .button button {
@@ -31,6 +27,16 @@
   
   .button button:hover {
     background-color: #ccc;
+  }
+
+  .button .name {
+    width: 80%;
+    background-color: white;
+    color: #aaa;
+    font-weight: bold;
+  }
+  .button .name:hover {
+    background-color: white;
   }
   
   .form-group {
