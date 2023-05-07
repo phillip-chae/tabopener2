@@ -4,7 +4,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [buttons, setButtons] = useState([]);
 
   function handleLogin() {
