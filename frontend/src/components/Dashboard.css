@@ -123,4 +123,24 @@ button:focus {
   margin-left: 10px;
 }
 
-  
+.save-all-changes-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.save-all-changes-button:hover {
+  background-color: #218838;
+}
+
+.save-all-changes-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}

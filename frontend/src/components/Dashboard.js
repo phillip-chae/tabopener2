@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import Button from "./Button";
 import "./Dashboard.css";
 
+const apiUrl = "http://localhost:3001/api"
+
 const Dashboard = () => {
   const [buttons, setButtons] = useState([]);
-
   const [showAddButtonForm, setShowAddButtonForm] = useState(false);
   const [newButtonName, setNewButtonName] = useState("");
   const [newButtonUrls, setNewButtonUrls] = useState("");
@@ -39,35 +41,29 @@ const Dashboard = () => {
 
   const handleDeleteButtonClick = (buttonId) => {
     setButtons(buttons.filter((button) => button.id !== buttonId));
-  };  
+  };
+
+  const handleSaveButtonClick = () => {
+    axios.post(`${apiUrl}/write-json/buttons`, buttons)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   useEffect(() => {
-    const storedButtons = localStorage.getItem("buttons");
-      setButtons([
-        {
-          id: 1,
-          name: "My Sites",
-          urls: [
-            "https://www.google.com",
-            "https://www.facebook.com",
-            "https://www.twitter.com",
-          ],
-        },
-        {
-          id: 2,
-          name: "My Work",
-          urls: [
-            "https://www.github.com",
-            "https://www.stackoverflow.com",
-            "https://www.linkedin.com",
-          ],
-        },
-      ]);
-    }, []);
-
-  useEffect(() => {
-    localStorage.setItem("buttons", JSON.stringify(buttons));
-  }, [buttons]);
+    axios.get(`${apiUrl}/read-json/buttons`)
+      .then(response =>{
+        const data = response.data;
+        setButtons(data);
+        console.log(data);
+      })
+      .catch(error => {
+        console.error(error);
+      })
+  }, []);
 
   const addButtonForm = (
     <form onSubmit={handleAddButtonFormSubmit}>
@@ -111,9 +107,16 @@ const Dashboard = () => {
             onEditButtonClick={handleEditButtonClick}
             onDeleteButtonClick={handleDeleteButtonClick}
           />
-         ))}
+        ))}
       </div>
       {showAddButtonForm ? addButtonForm : addNewButtonButton}
+      <button
+        onClick={handleSaveButtonClick}
+        className="save-all-changes-button"
+      >
+        Save all changes
+      </button>
+
     </div>
   );
 };
