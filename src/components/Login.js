@@ -16,7 +16,7 @@ function Login(props) {
   function handleSubmit(event) {
     event.preventDefault();
     // Check if the entered username and password match
-    if (username === 'phillwar' && password === 'Warphill') {
+    if (username === 'test' && password === 'test') {
       props.onLogin();
     } else {
       alert('Invalid username or password');

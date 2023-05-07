@@ -1,28 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "./Button";
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  const [buttons, setButtons] = useState([
-    {
-      id: 1,
-      name: "My Sites",
-      urls: [
-        "https://www.google.com",
-        "https://www.facebook.com",
-        "https://www.twitter.com"
-      ],
-    },
-    {
-      id: 2,
-      name: "My Work",
-      urls: [
-        "https://www.github.com",
-        "https://www.stackoverflow.com",
-        "https://www.linkedin.com"
-      ],
-    }
-  ]);
+  const [buttons, setButtons] = useState([]);
 
   const [showAddButtonForm, setShowAddButtonForm] = useState(false);
   const [newButtonName, setNewButtonName] = useState("");
@@ -48,6 +29,45 @@ const Dashboard = () => {
     setNewButtonUrls("");
     setShowAddButtonForm(false);
   };
+
+  const handleEditButtonClick = (editedButton) => {
+    const newButtons = buttons.map((button) =>
+      button.id === editedButton.id ? editedButton : button
+    );
+    setButtons(newButtons);
+  };
+
+  const handleDeleteButtonClick = (buttonId) => {
+    setButtons(buttons.filter((button) => button.id !== buttonId));
+  };  
+
+  useEffect(() => {
+    const storedButtons = localStorage.getItem("buttons");
+      setButtons([
+        {
+          id: 1,
+          name: "My Sites",
+          urls: [
+            "https://www.google.com",
+            "https://www.facebook.com",
+            "https://www.twitter.com",
+          ],
+        },
+        {
+          id: 2,
+          name: "My Work",
+          urls: [
+            "https://www.github.com",
+            "https://www.stackoverflow.com",
+            "https://www.linkedin.com",
+          ],
+        },
+      ]);
+    }, []);
+
+  useEffect(() => {
+    localStorage.setItem("buttons", JSON.stringify(buttons));
+  }, [buttons]);
 
   const addButtonForm = (
     <form onSubmit={handleAddButtonFormSubmit}>
@@ -88,22 +108,12 @@ const Dashboard = () => {
             id={button.id}
             name={button.name}
             urls={button.urls}
-            onDeleteButtonClick={(id) =>
-              setButtons(buttons.filter((button) => button.id !== id))
-            }
-            onEditButtonClick={(editedButton) =>
-              setButtons(
-                buttons.map((button) =>
-                  button.id === editedButton.id ? editedButton : button
-                )
-              )
-            }
+            onEditButtonClick={handleEditButtonClick}
+            onDeleteButtonClick={handleDeleteButtonClick}
           />
-        ))}
+         ))}
       </div>
-      <div className="add-button-form">
-        {showAddButtonForm ? addButtonForm : addNewButtonButton}
-      </div>
+      {showAddButtonForm ? addButtonForm : addNewButtonButton}
     </div>
   );
 };
