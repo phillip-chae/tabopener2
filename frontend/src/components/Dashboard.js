@@ -38,7 +38,6 @@ const Dashboard = () => {
     setNewButtonName("");
     setNewButtonUrls("");
     setShowAddButtonForm(false);
-    saveButtons();
   };
 
   // Handler for editing existing buttons
@@ -47,13 +46,11 @@ const Dashboard = () => {
       button.id === editedButton.id ? editedButton : button
     );
     setButtons(newButtons);
-    saveButtons();
   };
 
   // Handler for deleting existing buttons
   const handleDeleteButtonClick = (buttonId) => {
     setButtons(buttons.filter((button) => button.id !== buttonId));
-    saveButtons();
   };
 
   // Function to save button data to the API
@@ -79,7 +76,11 @@ const Dashboard = () => {
         console.error(error);
       })
   }, []);
-
+  
+  useEffect(() => {
+    saveButtons();
+  }, [buttons]);
+  
   // Form to add a new button
   const addButtonForm = (
     <form onSubmit={handleAddButtonFormSubmit}>
