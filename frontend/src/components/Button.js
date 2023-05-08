@@ -49,9 +49,8 @@ const Button = ({ id, name, urls, onDeleteButtonClick, onEditButtonClick }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor={`buttonUrls_${id}`}>URLs (comma-separated):</label>
-          <input
-            type="text"
+          <label htmlFor={`buttonUrls_${id}`}>URLs (Newline-separated):</label>
+          <textarea
             id={`buttonUrls_${id}`}
             value={editedUrls}
             onChange={handleUrlsChange}
