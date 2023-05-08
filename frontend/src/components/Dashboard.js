@@ -1,24 +1,32 @@
+// Importing necessary libraries and components
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Button from "./Button";
 import "./Dashboard.css";
 
+// Defining API URL
 const apiUrl = "http://localhost:3001/api"
 
+// Defining Dashboard component
 const Dashboard = () => {
+
+  // Declaring state variables for button list, adding new button form, new button name, and new button URLs
   const [buttons, setButtons] = useState([]);
   const [showAddButtonForm, setShowAddButtonForm] = useState(false);
   const [newButtonName, setNewButtonName] = useState("");
   const [newButtonUrls, setNewButtonUrls] = useState("");
 
+  // Handler for changes to new button name input
   const handleNewButtonNameChange = (event) => {
     setNewButtonName(event.target.value);
   };
 
+  // Handler for changes to new button URLs input
   const handleNewButtonUrlsChange = (event) => {
     setNewButtonUrls(event.target.value);
   };
 
+  // Handler for new button form submission
   const handleAddButtonFormSubmit = (event) => {
     event.preventDefault();
     const newButton = {
@@ -33,6 +41,7 @@ const Dashboard = () => {
     saveButtons();
   };
 
+  // Handler for editing existing buttons
   const handleEditButtonClick = (editedButton) => {
     const newButtons = buttons.map((button) =>
       button.id === editedButton.id ? editedButton : button
@@ -41,11 +50,13 @@ const Dashboard = () => {
     saveButtons();
   };
 
+  // Handler for deleting existing buttons
   const handleDeleteButtonClick = (buttonId) => {
     setButtons(buttons.filter((button) => button.id !== buttonId));
     saveButtons();
   };
 
+  // Function to save button data to the API
   const saveButtons = () => {
     axios.post(`${apiUrl}/write-json/buttons`, buttons)
       .then(response => {
@@ -56,6 +67,7 @@ const Dashboard = () => {
       });
   };
 
+  // useEffect hook to fetch button data from API on component mount
   useEffect(() => {
     axios.get(`${apiUrl}/read-json/buttons`)
       .then(response =>{
@@ -68,6 +80,7 @@ const Dashboard = () => {
       })
   }, []);
 
+  // Form to add a new button
   const addButtonForm = (
     <form onSubmit={handleAddButtonFormSubmit}>
       <div className="form-group">
@@ -93,13 +106,15 @@ const Dashboard = () => {
     </form>
   );
 
+  // Button to show the new button form
   const addNewButtonButton = (
     <button onClick={() => setShowAddButtonForm(true)}>Add Button</button>
   );
 
+  // Rendered content for the Dashboard component
   return (
     <div className="dashboard">
-      <h1>Tab Opener</h1>
+      <h1>Tabs</h1>
       <div className="button-list">
         {buttons.map((button) => (
           <Button

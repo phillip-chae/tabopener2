@@ -52,7 +52,7 @@ const Button = ({ id, name, urls, onDeleteButtonClick, onEditButtonClick }) => {
           <label htmlFor={`buttonUrls_${id}`}>URLs (Newline-separated):</label>
           <textarea
             id={`buttonUrls_${id}`}
-            value={editedUrls}
+            value={editedUrls.join("\n")}
             onChange={handleUrlsChange}
           />
         </div>
