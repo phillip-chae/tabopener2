@@ -30,6 +30,7 @@ const Dashboard = () => {
     setNewButtonName("");
     setNewButtonUrls("");
     setShowAddButtonForm(false);
+    saveButtons();
   };
 
   const handleEditButtonClick = (editedButton) => {
@@ -37,13 +38,15 @@ const Dashboard = () => {
       button.id === editedButton.id ? editedButton : button
     );
     setButtons(newButtons);
+    saveButtons();
   };
 
   const handleDeleteButtonClick = (buttonId) => {
     setButtons(buttons.filter((button) => button.id !== buttonId));
+    saveButtons();
   };
 
-  const handleSaveButtonClick = () => {
+  const saveButtons = () => {
     axios.post(`${apiUrl}/write-json/buttons`, buttons)
       .then(response => {
         console.log(response.data);
@@ -110,13 +113,6 @@ const Dashboard = () => {
         ))}
       </div>
       {showAddButtonForm ? addButtonForm : addNewButtonButton}
-      <button
-        onClick={handleSaveButtonClick}
-        className="save-all-changes-button"
-      >
-        Save all changes
-      </button>
-
     </div>
   );
 };
