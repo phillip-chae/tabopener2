@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": 1,
+    "name": "Rent Payments",
+    "urls": [
+      "https://docs.google.com/spreadsheets/d/1DcnEVwV29ZlieB2DGwK9_yxJgUMePUduzAoN1yGXAOU/edit#gid=0",
+      "https://app.beamliving.com/payments"
+    ]
+  }
+]
