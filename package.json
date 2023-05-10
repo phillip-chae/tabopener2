@@ -21,7 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "startapp": "concurrently \"npm start\" \"node Backend.App.js\""
+    "startapp": "concurrently \"npm start\" \"node src/Backend.App.js\""
   },
   "eslintConfig": {
     "extends": [
