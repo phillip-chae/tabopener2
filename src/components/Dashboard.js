@@ -3,9 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import Button from "./Button";
 import "./Dashboard.css";
-
-// Defining API URL
-const apiUrl = "http://localhost:3001/api"
+const { apiUrl } = require('../config');
 
 // Defining Dashboard component
 const Dashboard = () => {
@@ -77,8 +75,15 @@ const Dashboard = () => {
       })
   }, []);
   
+  //bugFixer is made so that the saveButtons() is not run before the json file is read
+  const [bugFixer, setBugFixer] = useState(0)
   useEffect(() => {
-    saveButtons();
+    if(bugFixer != 0){
+      saveButtons();
+    }
+    else{
+      setTimeout(setBugFixer(1),3000)
+    }
   }, [buttons]);
   
   // Form to add a new button
