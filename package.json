@@ -20,7 +20,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "electron-packager": "electron-packager . --overwrite --platform=win32 --arch=x64 --prune=true --out=release-builds",
+    "dist": "npm run electron-packager && npm run electron-builder",
+    "electron-builder": "electron-builder",
+    "dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": [
@@ -41,7 +46,8 @@
     ]
   },
   "devDependencies": {
-    "nw": "^0.75.1",
-    "nw-builder": "^4.2.3"
+    "electron": "^24.2.0",
+    "electron-builder": "^23.6.0",
+    "electron-packager": "^17.1.1"
   }
 }

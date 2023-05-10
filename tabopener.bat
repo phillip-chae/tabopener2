@@ -1,3 +1,3 @@
 @echo off
-start cmd /k "cd ./backend && npm start"
-start cmd /k "cd ./frontend && npm start"
+start cmd /k "npm start"
+start cmd /k "node src/Backend.App.js"
